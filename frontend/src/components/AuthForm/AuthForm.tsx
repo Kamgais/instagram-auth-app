@@ -1,47 +1,104 @@
 import React, {FunctionComponent} from 'react'
 import  styles from './auth.module.scss'
 import InstagramIcon from '../../assets/instagram-text.png'
+import AppleIcon from '../../assets/apple.png'
+import GoogleIcon from '../../assets/google.png'
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 import { FormikControl } from '../FormikControl';
+import { FaFacebookSquare  } from "react-icons/fa";
+
+
+type Props = {
+  type: string;
+}
 
 
 
-
-const AuthForm: FunctionComponent = () => {
-    const initalValues = {
-        username: '',
-        password: '',
-        email: '',
-        fullName: ''
+const AuthForm: FunctionComponent<Props> = ({type}) => {
+    const loginInitalValues = {
+      username: '',
+      password: '',
     }
 
-    const validationSchema = Yup.object({
-        email: Yup.string().required('email is required'),
+    const createAccountInitialValues = {
+      username: '',
+      password: '',
+      email: '',
+      fullName: ''
+    }
+
+    const loginSchema = Yup.object({
         username: Yup.string().required('username is required'),
         password: Yup.string().required('password is required'),
-        fullName: Yup.string().required('you must set a full name')
+        
     })
+
+    const createAccountSchema =  Yup.object({
+      email: Yup.string().required('email is required'),
+      username: Yup.string().required('username is required'),
+      password: Yup.string().required('password is required'),
+      fullName: Yup.string().required('you must set a full name')
+  })
   return (
     <div className={styles.authFormContainer}>
         <div className={styles.authFormFields}>
-             <img src={InstagramIcon} alt=""  width={120}/>
+             <img src={InstagramIcon} alt="" className={styles.instagramIcon}/>
+            { type === 'register' && (
+              <>
+              <div className={styles.createAccountTexts}>
+              Register to see your friends' photos and videos.
+              </div>
+              <button className={styles.facebookLoginButton}>
+               <FaFacebookSquare/>
+               Log in with Facebook
+              </button>
+              <div className={styles.barContainer}>
+               <div className={styles.bar}></div>
+               <span>OR</span>
+              </div>
+              </>
+            ) }
 
-             <Formik initialValues={initalValues} validationSchema={validationSchema} onSubmit={(values) => console.log(values)} >
+             <Formik  initialValues={type === 'login'? loginInitalValues: createAccountInitialValues} validationSchema={type === 'login'?loginSchema : createAccountSchema} onSubmit={(values) => console.log(values)}  >
                {
                 (formik: any) => (
                     <Form>
-                        <FormikControl control='input' type='email' withLabel={true} label={''}  name='email'/>
-                        <FormikControl control='input' type='password' withLabel={false} label={''}  name='email'/>
+                        { type !== 'login' && <><FormikControl control='input' type='email' withLabel={false} label={''}  name='email' placeholder='Email'/>
+                        <FormikControl control='input' type='text' withLabel={false} label={''}  name='fullName' placeholder='Full Name'/>
+                        </>
+                         }
+                        <FormikControl control='input' type='text' withLabel={false} label={''}  name='username' placeholder='Enter your username'/>
+                        <FormikControl control='input' type='password' withLabel={false} label={''}  name='password' placeholder='Enter your password'/>
+                        { type === 'register' && <div className={styles.rechtLinie}>
+                          <p>By registering, you agree to our Terms of Use. <span>Our Privacy Policy explains how we collect</span>, use and share your information.<span>Our Cookie Policy explains how we use</span> Our Cookie Policy explains how we use cookies and similar technologies.</p>
+                        </div> }
+                        <button type='submit' disabled={!(formik.isValid && formik.dirty)} className={styles.authFormButton}>{type === 'login'? 'Log In' : 'Sign Up'}</button>
+
                     </Form>
                 )
                }
              </Formik>
-
-
+            { type === 'login' && <> <div className={styles.barContainer}>
+              <div className={styles.bar}></div>
+              <span>OR</span>
+             </div>
+              
+              <p className={styles.loginWithFacebook}><FaFacebookSquare/>Log in with Facebook</p>
+              <p className={styles.forgotPassword}>Forgot password?</p>
+              </>
+              }
         </div>
-        <div className={styles.authFormForgotAccount}></div>
-        <div className={styles.authFormDownloads}></div>
+        <div className={styles.authFormsignUp}>
+          {type === 'login'? <p>Don't have an account? <a>Sign up</a></p> : <p>Have an account? <a>Log In</a></p> }
+        </div>
+        <div className={styles.authFormDownloads}>
+          <p>Get the app.</p>
+          <div className={styles.downloadIcons}>
+               <img src={AppleIcon} alt="download with apple store" width={100} />
+               <img src={GoogleIcon} alt="download with google play" width={100} />
+          </div>
+        </div>
 
 
     </div>

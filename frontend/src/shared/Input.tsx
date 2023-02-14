@@ -10,11 +10,16 @@ type InputType = {
   placeholder: string
 }
 
+
+const inputStyles  = {
+  width: '100%'
+}
+
 const Input: FunctionComponent<InputType> = ({withLabel,label, name, type, placeholder}) => {
   return (
-    <div className='form-control'>
+    <div className='form-control' style={inputStyles}>
      { withLabel &&  <label htmlFor={name}>{label}</label> }
-      <Field id={name} name={name} type={type} placeholder={placeholder}/>
+      <Field id={name} name={name} type={type} placeholder={placeholder} style={inputStyles} />
       <ErrorMessage name={name}>
         {
             (errorMsg: any) => <TextError>{errorMsg}</TextError>

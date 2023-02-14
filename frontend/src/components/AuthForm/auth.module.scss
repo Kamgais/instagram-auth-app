@@ -1,0 +1,213 @@
+@import '../../styles/colors';
+
+
+%block-shared {
+    border: 2px solid rgb(219, 217, 217);
+    width: 18vw;
+    min-width: 350px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.authFormContainer  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: max-content;
+    margin-top: 30px;
+}
+
+.authFormFields {
+    @extend %block-shared;
+   gap: 15px;
+   padding: 10px;
+
+
+}
+
+
+.instagramIcon {
+    width: 180px;
+    margin: 20px 0;
+
+}
+
+form {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+
+input[type= 'text'],
+input[type='email'] ,
+input[type='password']  {
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px;
+    outline: none;
+}
+
+.authFormButton {
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    height: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: $appBlue_normal;
+    color: $appWhite;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+        &:hover {
+            background-color: $appBlue_disabled;
+        }
+}
+
+.authFormButton:disabled {
+    background-color: $appBlue_disabled;
+    cursor: not-allowed ;
+}
+
+
+.barContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 5px;
+    margin-bottom: 10px;
+    
+
+
+    span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        font-weight: bold;
+        color: #888787;
+        background-color: white;
+        transform: translate(-50%, -50%);
+        
+    }
+    
+}
+
+.bar {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(165, 165, 165);
+
+            
+
+}
+
+.loginWithFacebook  {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+
+    &:hover {
+        color: $appBlue_disabled
+    }
+}
+
+.forgotPassword {
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+        color: $appBlue_disabled
+    }
+}
+
+.authFormsignUp {
+    @extend %block-shared;
+    padding: 20px 10px;
+
+
+    a {
+        color: $appBlue_normal;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+        &:hover {
+            color: $appBlue_disabled;
+        }
+    }
+}
+
+
+.authFormDownloads {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.downloadIcons {
+    display: flex;
+    gap: 10px;
+
+    img {
+        cursor: pointer;
+    }
+}
+
+
+.createAccountTexts {
+    text-align: center;
+    font-size: 22px;
+    color: #888787;
+}
+
+.facebookLoginButton {
+    width: 90%;
+    border-radius: 12px;
+    border: none;
+    height: 35px;
+    margin-top: 10px;
+    background-color: $appBlue_normal;
+    color: $appWhite;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+
+    &:hover {
+        background-color: $appBlue_disabled;
+    }
+}
+
+.rechtLinie {
+    color: #888787;
+    font-size: 13px;
+    margin-top: 20px;
+
+    span {
+        color: $appBlue_disabled
+    }
+}

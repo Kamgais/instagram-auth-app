@@ -1,0 +1,39 @@
+@import '../../styles/breakpoints';
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+   // background-color: rgb(241, 178, 178);
+    width: 80vw;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+
+.topContainer {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    
+    //background-color: red;
+
+    .LandingImage{
+        @include xs {
+           // display: none;
+            opacity: 0;
+            width: 0;
+        }
+        @include md{
+        //  display: block; 
+          opacity: 1;
+          width: 350px;
+        }
+        aspect-ratio: 2/2;
+        object-fit: cover;
+        height: 650px;
+        transition: opacity 0.3s ease-in;
+
+    }
+}
