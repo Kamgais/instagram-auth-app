@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import './App.scss'
+import  styles from './App.module.scss'
+import AuthForm from './components/AuthForm/AuthForm'
 
 function App() {
   
 
   return (
-    <div className="App">
-      
+    <div className={styles.app}>
+      <AuthForm/>
     </div>
   )
 }
