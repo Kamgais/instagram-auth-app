@@ -27,12 +27,12 @@ export const FormikControl: FunctionComponent<ControlType> = ({control, label, n
   
     switch(control) {
 
-        case 'input' : <Input label={label} name={name} type={type!} placeholder={placeholder!} withLabel={withLabel!}/>
-        case 'textarea': <TextArea label={label} name={name} placeholder={placeholder!}/>
-        case 'select' :  <Select label={label} name={name} options={options!}/>
-        case 'radio': <Radio label={label} name={name} options={options!} />
-        case 'checkbox' : <Checkbox label={label} name={name} options={options!}/>
-        case 'date' : <DatePicker label={label} name={name}/>
+        case 'input' :  return <Input label={label} name={name} type={type!} placeholder={placeholder!} withLabel={withLabel!}/>
+        case 'textarea': return  <TextArea label={label} name={name} placeholder={placeholder!}/>
+        case 'select' : return  <Select label={label} name={name} options={options!}/>
+        case 'radio': return <Radio label={label} name={name} options={options!} />
+        case 'checkbox' :  return <Checkbox label={label} name={name} options={options!}/>
+        case 'date' : return  <DatePicker label={label} name={name}/>
         default: return null;
     }
 }
