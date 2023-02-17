@@ -1,0 +1,1 @@
+export type OutPutType<T> = T | {message: string}
