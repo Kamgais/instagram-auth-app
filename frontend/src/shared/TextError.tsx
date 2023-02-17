@@ -7,11 +7,12 @@ type ErrorProps = {
 
 
 const styles = {
-  color: 'red',
-  fontSize: '12px',
+  color: '#e74c3c',
+  fontSize: '11px',
   display: 'flex',
   alignItems: 'center',
-  gap: '5px'
+  gap: '5px',
+  fontWeight: '300'
 }
 const TextError: FunctionComponent<ErrorProps> = (props) => {
   return (
