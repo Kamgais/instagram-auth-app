@@ -1,14 +1,20 @@
-import  styles from './App.module.scss'
-import AuthFooter from './components/AuthFooter/AuthFooter'
-import AuthForm from './components/AuthForm/AuthForm'
-import LoginPage from './pages/LoginPage/LoginPage'
-import RegisterPage from './pages/RegisterPage/RegisterPage'
+import  styles from './App.module.scss';
+import { routes } from './routes';
+import RoutingConfig from './routes/RoutingConfig';
+import {QueryClientProvider, QueryClient} from 'react-query'
+import {ReactQueryDevtools} from 'react-query/devtools';
 
 function App() {
   
+  const queryClient = new QueryClient();
 
   return (
-    <LoginPage/>
+   <>
+   <QueryClientProvider client={queryClient}>
+   <RoutingConfig routes={routes}/>
+   <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+   </QueryClientProvider>
+   </>
   )
 }
 

@@ -7,7 +7,7 @@ import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 import { FormikControl } from '../FormikControl';
 import { FaFacebookSquare  } from "react-icons/fa";
-
+import {useNavigate} from 'react-router-dom'
 
 type Props = {
   type: string;
@@ -16,6 +16,8 @@ type Props = {
 
 
 const AuthForm: FunctionComponent<Props> = ({type}) => {
+
+  const navigate = useNavigate();
     const loginInitalValues = {
       username: '',
       password: '',
@@ -35,10 +37,10 @@ const AuthForm: FunctionComponent<Props> = ({type}) => {
     })
 
     const createAccountSchema =  Yup.object({
-      email: Yup.string().required('email is required'),
-      username: Yup.string().required('username is required'),
+      email: Yup.string().required('email is required').email('set a correct email'),
+      username: Yup.string().required('username is required').min(6).max(10),
       password: Yup.string().required('password is required'),
-      fullName: Yup.string().required('you must set a full name')
+      fullName: Yup.string().required('you must set a full name').min(6).max(25)
   })
   return (
     <div className={styles.authFormContainer}>
@@ -90,7 +92,7 @@ const AuthForm: FunctionComponent<Props> = ({type}) => {
               }
         </div>
         <div className={styles.authFormsignUp}>
-          {type === 'login'? <p>Don't have an account? <a>Sign up</a></p> : <p>Have an account? <a>Log In</a></p> }
+          {type === 'login'? <p>Don't have an account? <a onClick={() => navigate('/signup')}>Sign up</a></p> : <p>Have an account? <a onClick={() => navigate('/login')}>Log In</a></p> }
         </div>
         <div className={styles.authFormDownloads}>
           <p>Get the app.</p>
