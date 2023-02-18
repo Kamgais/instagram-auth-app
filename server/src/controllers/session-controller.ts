@@ -38,8 +38,8 @@ export const createSessionHandler = async (
       httpOnly: true,
       domain: "localhost",
       path: "/",
-      sameSite: "strict",
-      secure: false,
+      sameSite: "none",
+      secure: true,
     });
 
     res.cookie("refreshToken", refreshToken, {
@@ -47,8 +47,8 @@ export const createSessionHandler = async (
       httpOnly: true,
       domain: "localhost",
       path: "/",
-      sameSite: "strict",
-      secure: false,
+      sameSite: "none",
+      secure: true,
     });
     const sessionResponse: SessionDto = SessionMapper.toDto(session);
     return res.status(200).json(sessionResponse);

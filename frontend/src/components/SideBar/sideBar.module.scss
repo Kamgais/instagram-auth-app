@@ -1,0 +1,204 @@
+@import '../../styles/breakpoints';
+
+
+.sideBarContainer {
+
+    @include xs {
+        left: 0;
+        right: 0;
+        bottom: 0;
+       // background-color: red;
+        flex-direction: row;
+        border-top: 1px solid rgb(196, 196, 196);
+    }
+    @include md {
+        flex-direction: column;
+        width: 6vw;
+        min-width: 80px;
+        align-items: center;
+        padding-left: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-right: 1px solid rgb(196, 196, 196);
+    }
+    position: fixed;
+    z-index: 100;
+   // background-color: white;
+    
+    
+    @include xxl {
+     width: 18vw;
+     min-width: 250px;
+     align-items: start;
+     padding-left: 20px;
+     left: 0;
+    top: 0;
+    bottom: 0;
+    border-right: 1px solid rgb(196, 196, 196);
+    }
+    
+    
+    display: flex;
+    
+    
+}
+
+
+
+.sideBarLogo {
+    @include xs {
+        display: none;
+    }
+    @include md {
+        display: block;
+        content: url('../../../public/instagram.png');
+        width: 60px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      //  background-color: red;
+    }
+
+    @include xxl {
+        content: url('../../assets/instagram-text.png');
+        width: 150px;
+    }
+    
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 10px;
+
+}
+
+
+.links {
+    @include xs {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+       // background-color: green;
+
+    }
+    @include md {
+        flex-direction: column;
+    }
+    display: flex;
+    
+    list-style-type: none;
+    @include xxl {
+     width: 100%;
+    }
+   
+    height: 45%;
+    justify-content: space-around;
+
+
+    .linkItem {
+        @include xs {
+            display: flex;
+            justify-content: center;
+            font-size: 1.5em;
+           
+           
+        }
+        @include md {
+            width: 90%;
+            font-size: 30px;
+           
+        }
+
+        @include xxl {
+         justify-content: flex-start;
+        }
+        
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 35px;
+        padding: 10px;
+        border-radius: 50px;
+        transition: all 0.3s ease-out;
+        
+        &:nth-child(2) {
+            @include xs {
+                display: none;
+            }
+
+            @include md {
+                display: flex;
+            }
+        }
+
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(196, 197, 196, 0.151);
+
+        }
+
+
+
+        .linkItemText{
+            @include xs {
+            display: none;
+            }
+            @include xxl {
+                display: block;
+            }
+            font-size: 18px;
+            font-weight: 300;
+        }
+    }
+
+}
+
+
+.moreButton {
+    @include xs {
+        display: none;
+    }
+    @include md {
+        padding: 0;
+        justify-content: center;
+        display: flex;
+    }
+
+    @include xxl {
+        padding: 10px;
+        justify-content: start;
+    }
+    margin-top: auto;
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    gap: 10px;
+    font-size: 30px;
+    
+    width: 90%;
+    border-radius: 50px;
+
+
+    transition: all 0.3s ease-out;
+        
+
+
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(196, 197, 196, 0.151);
+
+        }
+
+
+    .moreButtonText{
+        @include xs {
+         display: none;
+        }
+        @include xxl {
+            display: block;
+        }
+        font-size: 18px;
+        font-weight: 300; 
+
+    }
+}

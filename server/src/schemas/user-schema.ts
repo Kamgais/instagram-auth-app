@@ -6,7 +6,7 @@ export const CreateUserSchema = z.object({
     username: z.string({
         required_error: 'username is required'
     }).min(3).max(10),
-    name: z.string({
+    fullName: z.string({
         required_error: 'name is required'
     }).min(3).max(20),
     

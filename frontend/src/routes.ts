@@ -1,25 +1,77 @@
 import { FunctionComponent } from "react";
+import AppContainer from "./pages/AppContainer/AppContainer";
+import Chat from "./pages/Chat/Chat";
+import Explore from "./pages/Explore/Explore";
+import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import Profile from "./pages/Profile/Profile";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 
 type Route = {
     path: string,
-    element: FunctionComponent
+    redirect?: string,
+    element: FunctionComponent,
+    routes?: Route[],
+    protected: boolean
+
 }
 
 export const routes: Route[] = [
 
+   
     {
         path: "/",
-        element: LoginPage
-    },
+        redirect: '/login',
+        element: LoginPage,
+        protected: false
+
+    }, 
     {
         path: "/login",
-        element: LoginPage
+        element: LoginPage,
+        protected: false
     }, 
     {
         path: "/signup",
-        element: RegisterPage
+        element: RegisterPage,
+        protected: false
+    },
+
+    {
+        path: "/app",
+        element: AppContainer,
+        protected: true,
+        routes: [
+            {
+                path: 'home',
+                element : HomePage,
+                protected:true
+            },
+            {
+                path: 'explore',
+                element: Explore,
+                protected:true
+            }
+            ,
+            {
+                path: 'direct/inbox',
+                element: Chat,
+                protected:true
+            },
+            {
+                path: 'profile',
+                element: Profile,
+                protected:true
+            }
+            ,
+            {
+                path: 'reels/videos',
+                element: Explore,
+                protected:true
+            }
+        ]
+
     }
+    
 ]

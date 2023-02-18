@@ -34,7 +34,7 @@ export class User extends Model<User> {
       len: [3, 20],
     },
   })
-  name!: string;
+  fullName!: string;
 
   @Column({
     type: DataTypes.STRING,
