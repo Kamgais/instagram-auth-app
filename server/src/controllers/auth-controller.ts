@@ -49,7 +49,9 @@ export class AuthController {
         subject: "Confirm your email",
         html: html,
       };
-      await sendgrid.send(msg);
+      await sendgrid.send(msg).catch((error) => {
+        console.log(error)
+      });
 
       console.log("Email send");
       return res.status(200).json(userResponse);

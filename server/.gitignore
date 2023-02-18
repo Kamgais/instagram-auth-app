@@ -1,0 +1,28 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+
+# Build output
+dist
+build
+node_modules
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional eslint cache
+.eslintcache
+
+# macOS
+.DS_Store
+
+
+#env
+.env
