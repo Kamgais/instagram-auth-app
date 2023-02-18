@@ -1,0 +1,35 @@
+@import '../../styles/breakpoints';
+
+
+
+
+.appContainer {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    
+   
+
+
+}
+
+
+.contentContainer{
+
+    @include xs {
+        width: 100%;
+    }
+    @include md {
+        width: 93.5%;
+    }
+
+    @include xxl {
+    width: 82%;
+    }
+   
+   min-height: 100vh;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+}

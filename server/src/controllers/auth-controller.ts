@@ -4,6 +4,8 @@ import { UserMapper } from "../mappers/user-mapper";
 import { CreateUserInput } from "../schemas/user-schema";
 import {
   create,
+  existWithEmail,
+  existWithUsername,
   findUserByEmail,
   findUserByUsername,
 } from "../services/user-service";
@@ -20,13 +22,13 @@ export class AuthController {
     res: Response<OutPutType<UserDto>>
   ): Promise<Response> {
     try {
-      const userWithUsername = await findUserByUsername(req.body.username);
-      if (userWithUsername)
+      const userWithUsername = await existWithUsername(req.body.username);
+      if (userWithUsername) {
         return res.status(403).json({ message: "username not available" });
+      }
 
-      const userWithEmail = await findUserByEmail(req.body.email);
-      if (userWithEmail)
-        return res.status(403).json({ message: "email not available" });
+      const userWithEmail = await existWithEmail(req.body.email);
+      if(userWithEmail) return res.status(403).json({ message: "email not available" });
       const user = await create(req.body);
 
       const userResponse = UserMapper.toDto(user);

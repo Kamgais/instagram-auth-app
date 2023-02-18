@@ -1,0 +1,26 @@
+.linkItem {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 50px;
+    transition: all 0.3s ease-out;
+    
+
+
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(196, 197, 196, 0.151);
+
+    }
+
+
+
+    .linkItemText{
+        font-size: 18px;
+        font-weight: 300;
+    }
+}

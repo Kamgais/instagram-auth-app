@@ -3,7 +3,8 @@ $breaklpoints: (
     "sm" : 480px,
     "md" : 720px,
     "lg": 960px,
-    "xl": 1200px
+    "xl": 1200px,
+    "xxl": 1250px
 
 );
 
@@ -36,6 +37,12 @@ $breaklpoints: (
 
 @mixin xl {
     @media (min-width: map-get($breaklpoints, "xl")) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media (min-width: map-get($breaklpoints, "xxl")) {
         @content;
     }
 }
