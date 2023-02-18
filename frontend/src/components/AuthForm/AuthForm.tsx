@@ -8,6 +8,10 @@ import * as Yup from 'yup';
 import { FormikControl } from '../FormikControl';
 import { FaFacebookSquare  } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom'
+import { useLogin , useSignUp } from '../../hooks/useAuth'
+import { UserDto } from '../../types/UserDto'
+import Loader from '../Loader/Loader'
+
 
 type Props = {
   type: string;
@@ -16,6 +20,8 @@ type Props = {
 
 
 const AuthForm: FunctionComponent<Props> = ({type}) => {
+  const login = useLogin();
+  const signup = useSignUp();
 
   const navigate = useNavigate();
     const loginInitalValues = {
@@ -42,10 +48,24 @@ const AuthForm: FunctionComponent<Props> = ({type}) => {
       password: Yup.string().required('password is required'),
       fullName: Yup.string().required('you must set a full name').min(6).max(25)
   })
+
+
+  const handleSubmit = (values: UserDto) => {
+   if(type === 'register') {
+    console.log(values)
+    signup.mutate(values);
+    
+   } else {
+    login.mutate(values);
+    console.log('GOOD')
+   
+   }
+  }
   return (
     <div className={styles.authFormContainer}>
         <div className={styles.authFormFields}>
              <img src={InstagramIcon} alt="" className={styles.instagramIcon}/>
+             
             { type === 'register' && (
               <>
               <div className={styles.createAccountTexts}>
@@ -62,7 +82,7 @@ const AuthForm: FunctionComponent<Props> = ({type}) => {
               </>
             ) }
 
-             <Formik  initialValues={type === 'login'? loginInitalValues: createAccountInitialValues} validationSchema={type === 'login'?loginSchema : createAccountSchema} onSubmit={(values) => console.log(values)}  >
+             <Formik  initialValues={type === 'login'? loginInitalValues: createAccountInitialValues} validationSchema={type === 'login'?loginSchema : createAccountSchema} onSubmit={handleSubmit}  >
                {
                 (formik: any) => (
                     <Form>
@@ -75,7 +95,14 @@ const AuthForm: FunctionComponent<Props> = ({type}) => {
                         { type === 'register' && <div className={styles.rechtLinie}>
                           <p>By registering, you agree to our Terms of Use. <span>Our Privacy Policy explains how we collect</span>, use and share your information.<span>Our Cookie Policy explains how we use</span> Our Cookie Policy explains how we use cookies and similar technologies.</p>
                         </div> }
-                        <button type='submit' disabled={!(formik.isValid && formik.dirty)} className={styles.authFormButton}>{type === 'login'? 'Log In' : 'Sign Up'}</button>
+                        <button type='submit' disabled={!(formik.isValid && formik.dirty)} className={styles.authFormButton}>
+                          {type === 'login'? 'Log In' : 'Sign Up'}
+                          {
+                           signup.isLoading || login.isLoading  && (
+                                  <Loader/>
+                        )
+                          }
+                        </button>
 
                     </Form>
                 )
