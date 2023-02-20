@@ -10,7 +10,8 @@ export const create = async(userInput: CreateUserInput): Promise<any> => {
         username: userInput.username,
         fullName: userInput.fullName,
         email: userInput.email,
-        password: userInput.password
+        password: userInput.password,
+        
     })
 
    
@@ -30,6 +31,8 @@ export const findUserById = async(id: number) => {
     return Promise.reject(error)
   }
 }
+
+
 
 
 
@@ -66,6 +69,6 @@ export const findUserByEmail = async(email: string) => {
     const user = await User.findOne({where: {email}})
     return Promise.resolve(user)
   } catch (error) {
-    return Promise.reject({message: 'no user with this username'})
+    return Promise.reject({message: 'user don\'t exist'})
   }
 }

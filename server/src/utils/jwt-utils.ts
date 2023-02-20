@@ -11,13 +11,14 @@ export function signJwt(object: Object, options?:jwt.SignOptions | undefined) {
 
 export function verifyJwt(token: string) {
     try {
-        const decoded: string | JwtPayload = jwt.verify(token, process.env.JWT_PUBLIC_KEY!);
+        const decoded: string | JwtPayload = jwt.verify(token, process.env.JWT_PRIVATE_KEY!);
         return {
             valid: true,
             expired: false,
             decoded: decoded
         }
     } catch (error: any) {
+       
        return {
         valid: false,
         expired: error.message === 'jwt expired',

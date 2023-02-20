@@ -22,7 +22,7 @@ export class User extends Model<User> {
     allowNull: false,
     unique: true,
     validate: {
-      len: [3, 10],
+      len: [3, 20],
     },
   })
   username!: string;
