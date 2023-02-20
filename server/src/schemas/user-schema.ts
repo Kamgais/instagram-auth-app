@@ -19,4 +19,4 @@ export const CreateUserSchema = z.object({
 
 })
 
-export type CreateUserInput = z.infer<typeof CreateUserSchema>;
+export type CreateUserInput = (z.infer<typeof CreateUserSchema>) & {id?: number};

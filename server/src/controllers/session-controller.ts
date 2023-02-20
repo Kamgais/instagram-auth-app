@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { UserLoginInput } from "../schemas/session-schema";
 import { createSession } from "../services/session-service";
 import { findUserByUsername } from "../services/user-service";
@@ -7,6 +7,7 @@ import { signJwt } from "../utils/jwt-utils";
 import { SessionDto } from "../dtos/session-dto";
 import { SessionMapper } from "../mappers/session-mapper";
 import { OutPutType } from "../utils/output-type";
+import { UserDto } from "../dtos/user-dto";
 
 export const createSessionHandler = async (
   req: Request<{}, {}, UserLoginInput>,
@@ -58,3 +59,44 @@ export const createSessionHandler = async (
     return res.status(500).json({ message: error.message });
   }
 };
+
+
+export const googleCallBackHandler = async(req: Request, res: Response, next: NextFunction)=> {
+  console.log(req.user)
+  const id = (req.user as UserDto).id;
+  try {
+    const session = await createSession(id!)
+    // generate access token 
+    const accessToken = signJwt({userId: id}, {expiresIn: '15m'})
+
+    // generate referesh token 
+    const refreshToken = signJwt({userId: id}, {expiresIn: '1y'})
+
+    res.cookie("accessToken", accessToken, {
+      maxAge: 900000, // 15 mins
+      httpOnly: true,
+      domain: "localhost",
+      path: "/",
+      sameSite: "none",
+      secure: true,
+    });
+
+    res.cookie("refreshToken", refreshToken, {
+      maxAge: 3.154e10, // 1 year
+      httpOnly: true,
+      domain: "localhost",
+      path: "/",
+      sameSite: "none",
+      secure: true,
+    });
+
+    const sessionResponse = SessionMapper.toDto(session);
+    res.locals.session = sessionResponse
+    next()
+    
+
+  } catch (error: any) {
+    return res.status(500).json({message: 'Internal server Error'})
+  }
+
+}
