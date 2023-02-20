@@ -1,0 +1,99 @@
+@import '../../styles/colors';
+@import '../../styles/breakpoints';
+
+.forgotContainer  {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+   transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    @include xs {
+        width: 100%;
+        justify-content: center;
+    }
+    @include md {
+        width: 30%;
+        min-width: 500px;
+    }
+    
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+    max-width: 700px;
+  
+
+    .forgotText {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+
+.forgotRestButton {
+    width: 40%;
+    height: 50px;
+    margin: 10px 0 ;
+    border-radius: 50px;
+    color: $appWhite;
+    background-color: $appBlue_normal;
+    transition: all 0.2s ease-out;
+
+
+    &:hover {
+        background-color: $appBlue_disabled;
+    }
+
+    &:disabled {
+        background-color: $appBlue_disabled;
+        cursor: not-allowed;
+    }
+}
+
+.forgotInstagramLogo {
+    width: 200px;
+    background-color: rgb(185, 252, 178);
+    border-radius: 50px;
+}
+.forgotExplains {
+    color: gray;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.mainContainer {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+   // background-color: green;
+   @include md {
+    background: url('../../assets/social.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+
+
+    &::before{
+        content: "";
+        background: rgba(0, 0, 0, 0.705);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;   
+    }
+   }
+  
+   
+  
+}
+
+.backToLogin {
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        color: $appBlue_disabled;
+    }
+}

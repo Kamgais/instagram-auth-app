@@ -1,6 +1,5 @@
 import passport from 'passport';
-import googleAuth from 'passport-google-oauth20';
-import { create, findUserByEmail, findUserById } from '../services/user-service';
+import { create, findUserByEmail } from '../services/user-service';
 
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;

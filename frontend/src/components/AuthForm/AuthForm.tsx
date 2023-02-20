@@ -6,7 +6,7 @@ import GoogleIcon from '../../assets/google.png'
 import {Formik, Form} from 'formik';
 import * as Yup from 'yup';
 import { FormikControl } from '../FormikControl';
-import { FaFacebookSquare  } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom'
 import { useLogin , useSignUp } from '../../hooks/useAuth'
 import { UserDto } from '../../types/UserDto'
@@ -20,6 +20,7 @@ type Props = {
 
 
 const AuthForm: FunctionComponent<Props> = ({type}) => {
+ 
   const login = useLogin();
   const signup = useSignUp();
 
@@ -61,6 +62,11 @@ const AuthForm: FunctionComponent<Props> = ({type}) => {
    
    }
   }
+
+
+  const loginWithGoogle = () => {
+    window.open('http://localhost:5000/api/auth/google', '_self')
+  }
   return (
     <div className={styles.authFormContainer}>
         <div className={styles.authFormFields}>
@@ -72,8 +78,8 @@ const AuthForm: FunctionComponent<Props> = ({type}) => {
               Register to see your friends' photos and videos.
               </div>
               <button className={styles.facebookLoginButton}>
-               <FaFacebookSquare/>
-               Log in with Facebook
+               <FaGoogle/>
+               Log in with Google
               </button>
               <div className={styles.barContainer}>
                <div className={styles.bar}></div>
@@ -113,8 +119,8 @@ const AuthForm: FunctionComponent<Props> = ({type}) => {
               <span>OR</span>
              </div>
               
-              <p className={styles.loginWithFacebook}><FaFacebookSquare/>Log in with Facebook</p>
-              <p className={styles.forgotPassword}>Forgot password?</p>
+              <p className={styles.loginWithFacebook} onClick={loginWithGoogle}><FaGoogle/>Log in with Google</p>
+              <p className={styles.forgotPassword} onClick={() => navigate('/forgot-password')}>Forgot password?</p>
               </>
               }
         </div>

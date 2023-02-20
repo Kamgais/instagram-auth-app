@@ -127,7 +127,7 @@ input[type='password']  {
 
 
     &:hover {
-        color: $appBlue_disabled
+        color: $appRot_disabled
     }
 }
 
@@ -187,7 +187,7 @@ input[type='password']  {
     border: none;
     height: 35px;
     margin-top: 10px;
-    background-color: $appBlue_normal;
+    background-color: $appRot_normal;
     color: $appWhite;
     font-weight: bold;
     display: flex;
@@ -199,7 +199,7 @@ input[type='password']  {
 
 
     &:hover {
-        background-color: $appBlue_disabled;
+        background-color: $appRot_disabled;
     }
 }
 
