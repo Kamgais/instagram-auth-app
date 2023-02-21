@@ -1,9 +1,9 @@
 import { IconType } from "react-icons/lib"
-import {AiFillHome, AiOutlineHome} from 'react-icons/ai'
+import {AiFillHome, AiOutlineHome } from 'react-icons/ai'
 import {CiSearch} from 'react-icons/ci'
 import {FiSearch} from 'react-icons/fi'
 import {MdOutlineExplore, MdExplore} from 'react-icons/md'
-import {BsCameraReels, BsCameraReelsFill} from 'react-icons/bs'
+import {BsCameraReels, BsCameraReelsFill, BsHeartFill , BsHeart } from 'react-icons/bs'
 import {RiMessengerLine, RiMessengerFill, RiAddBoxLine,RiAddBoxFill, RiAccountCircleLine, RiAccountCircleFill } from 'react-icons/ri';
 
 
@@ -80,6 +80,16 @@ export const topBarItems: TopBarItem[]= [
 
     {
         id: 6,
+        name: 'Notifications',
+        icon: BsHeart,
+        iconOnFocus: BsHeartFill,
+        toolTipText: 'notifications',
+        focus: false
+        
+    }  ,
+
+    {
+        id: 7,
         name: 'Create',
         icon: RiAddBoxLine,
         iconOnFocus: RiAddBoxFill,
@@ -89,7 +99,7 @@ export const topBarItems: TopBarItem[]= [
     }  ,
 
     {
-        id: 7,
+        id: 8,
         name: 'Profile',
         icon: RiAccountCircleLine,
         iconOnFocus: RiAccountCircleFill,

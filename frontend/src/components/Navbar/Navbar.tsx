@@ -4,6 +4,7 @@ import InstagramLogo from '../../assets/instagram-text.png';
 import { FiSearch } from "react-icons/fi";
 import { IoIosCloseCircle } from "react-icons/io";
 import { BsHeart } from "react-icons/bs"
+import IcDrawer from '../IcDrawer/IcDrawer';
 
 
 const Navbar: FunctionComponent = () => {
@@ -12,6 +13,7 @@ const Navbar: FunctionComponent = () => {
   
   return (
     <nav className={styles.navbarContainer}>
+      
      <div className={styles.navbarLogo}>
      <img src={InstagramLogo} className={styles.navbarImage}/>
      </div>
