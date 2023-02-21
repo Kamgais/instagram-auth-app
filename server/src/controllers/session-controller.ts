@@ -62,7 +62,7 @@ export const createSessionHandler = async (
 
 
 export const googleCallBackHandler = async(req: Request, res: Response, next: NextFunction)=> {
-  console.log(req.user)
+  
   const id = (req.user as UserDto).id;
   try {
     const session = await createSession(id!)

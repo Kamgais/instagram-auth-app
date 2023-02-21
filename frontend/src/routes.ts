@@ -33,6 +33,10 @@ export const routes: Route[] = [
         path: "/login",
         element: LoginPage,
         protected: false
+    }, {
+        path: "/login/:google",
+        element: LoginPage,
+        protected: false
     }, 
     {
         path: "/signup",
@@ -52,12 +56,12 @@ export const routes: Route[] = [
     {
         path: "/app",
         element: AppContainer,
-        protected: false,
+        protected: true,
         routes: [
             {
                 path: 'home',
                 element : HomePage,
-                protected:false
+                protected: true
             },
             {
                 path: 'explore',

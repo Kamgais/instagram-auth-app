@@ -12,4 +12,4 @@ export const SessionSchema = z.object({
     })
 })
 
-export type UserLoginInput = z.infer<typeof SessionSchema>
+export type UserLoginInput = z.infer<typeof SessionSchema> 

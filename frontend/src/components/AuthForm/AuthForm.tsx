@@ -11,6 +11,8 @@ import {useNavigate} from 'react-router-dom'
 import { useLogin , useSignUp } from '../../hooks/useAuth'
 import { UserDto } from '../../types/UserDto'
 import Loader from '../Loader/Loader'
+import { useParams } from 'react-router-dom'
+import { useGoogleAuth } from '../../hooks/useGoogleAuth'
 
 
 type Props = {
@@ -20,7 +22,10 @@ type Props = {
 
 
 const AuthForm: FunctionComponent<Props> = ({type}) => {
- 
+  const {google} = useParams();
+ if( google && google === 'google') {
+  const {data, isLoading, isError} = useGoogleAuth()
+ }
   const login = useLogin();
   const signup = useSignUp();
 

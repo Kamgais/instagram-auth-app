@@ -5,8 +5,8 @@ import { create, findUserByEmail } from '../services/user-service';
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
-    clientID: '1511726345-kmqtdbdf4lr3dk4hbd1m2k7mi6tkk1nv.apps.googleusercontent.com',
-    clientSecret:'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',
+    clientID: `1511726345-kmqtdbdf4lr3dk4hbd1m2k7mi6tkk1nv.apps.googleusercontent.com`,
+    clientSecret: `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`,
     callbackURL: "/api/auth/google/callback"
   },
  async function(accessToken: any, refreshToken: any, profile: any, cb: any) {

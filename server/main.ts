@@ -52,7 +52,7 @@ app.use(express.json())
 
 
 
-app.listen(process.env.PORT || 5000 , async() => {
+app.listen(process.env.PORT, async() => {
     console.log('server start...')
     await connect();
 })

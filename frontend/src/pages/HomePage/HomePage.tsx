@@ -1,12 +1,24 @@
 import React, {useEffect} from 'react'
-import { useQuery } from 'react-query'
-import { useGoogleAuth } from '../../hooks/useGoogleAuth'
+import Navbar from '../../components/Navbar/Navbar'
+import StoryFeed from '../../components/StoryFeed/StoryFeed'
+import Recommendations from '../../layouts/Recommandations/Recommendations'
+import styles from './home.module.scss'
+
 
 const HomePage = () => {
-  console.log(window.history)
-    const {data, isLoading, isError} = useGoogleAuth()
+
+    
   return (
-    <div style={{fontSize: '100px'}}>HomePage</div>
+    <div className={styles.homeContainer}>
+      <Navbar/>
+      <div className={styles.homeContainerLeft}>
+      <StoryFeed/>
+      </div>
+      <div className={styles.homeContainerRight}>
+      <Recommendations/>
+      </div>
+      
+    </div>
   )
 }
 
