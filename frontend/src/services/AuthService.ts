@@ -1,5 +1,5 @@
 import { UserDto } from "../types/UserDto";
-import { get, post } from "../config/axiosInstance";
+import { get, post, put } from "../config/axiosInstance";
 import { SessionDto } from "../types/SessionDto";
 
 type ErrorType = {
@@ -14,7 +14,7 @@ export class AuthService {
         return Promise.resolve<UserDto>(data);
        
     } catch (error: any) {
-      return Promise.reject<ErrorType>(error.response.data);
+      return Promise.reject<ErrorType>((error.response && error.response).data || error);
     }
   }
 
@@ -26,7 +26,7 @@ export class AuthService {
         return Promise.resolve<SessionDto>(data);
       
     } catch (error: any) {
-      return Promise.reject<ErrorType>(error.response.data)
+      return Promise.reject<ErrorType>((error.response && error.response).data || error)
     }
 
   }
@@ -40,7 +40,40 @@ export class AuthService {
         return Promise.resolve<UserDto>(data);
       
     } catch (error: any) {
-     return Promise.reject<ErrorType>(error.response.data);
+     return Promise.reject<ErrorType>((error.response && error.response).data || error);
+    }
+  }
+
+
+  static async resetLink(email: string): Promise<any> {
+      try {
+        const responseFromApi = await post('http://localhost:5000/api/auth/forgot-password', undefined, {email})
+        const {data} = responseFromApi;
+        return Promise.resolve(data)
+      } catch (error: any) {
+        return Promise.reject((error.response && error.response).data || error)
+      }
+  }
+
+
+  static async resetPassword(userToken: string, password: string): Promise<any> {
+    try {
+      const responseFromApi = await put(`http://localhost:5000/api/auth/reset-password`, {userToken: userToken}, {password: password})
+      const {data} = responseFromApi;
+      return Promise.resolve(data);
+    } catch (error: any) {
+      return Promise.reject((error.response && error.response).data || error)
+    }
+  }
+
+
+  static async fetchAuthenticatedGoogleUser() {
+    try {
+      const responseFromApi = await get(`http://localhost:5000/api/auth/login/success`)
+      const {data} = responseFromApi
+      return Promise.resolve(data)
+    } catch (error: any) {
+      return Promise.reject((error.response && error.response).data || error)
     }
   }
 }

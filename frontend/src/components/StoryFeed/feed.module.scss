@@ -1,0 +1,52 @@
+@import '../../styles/colors';
+
+.storyFeedContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+     
+    width: 59.5%;
+    min-width: 450px;
+    overflow: hidden;
+   // background-color: rgb(237, 238, 237);
+   // align-self: flex-start;
+   border-radius: 50px;
+
+
+
+   .chevronLeft {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    color: $appWhite;
+    font-size: 25px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+   }
+
+   .chevronRight {
+    position: absolute;
+    right: 1%;
+    top: 50%;
+    color: $appWhite;
+    font-size: 25px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+   }
+   
+}
+
+
+.storyList {
+    display: flex;
+    //justify-content: center;
+
+   // background-color: red;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    transition: transform 1.0s ease-in-out ;
+}

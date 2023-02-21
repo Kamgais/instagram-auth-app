@@ -55,6 +55,42 @@ import { useNavigate } from "react-router-dom"
 
 
 
+    export const useSendLink = () => {
+        const toast = useToast();
+        
+        return useMutation({
+            mutationFn: (email: string) => AuthService.resetLink(email),
+            onSuccess: (data) => {
+                toast({title: data.message, status: 'success', isClosable: true, variant: 'left-accent', position: 'top', colorScheme: 'blue' });
+  
+            },
+            onError: (error: any) => {
+            toast({title: error.message || 'fail connect with server' , status: 'error', isClosable: true, variant: 'left-accent', position: 'top'})
+            }
+        })
+    }
+
+
+    export const useReset = () => {
+        const toast = useToast();
+        const navigate = useNavigate();
+        return useMutation({
+            mutationFn: (values: any) => AuthService.resetPassword(values.userToken, values.password),
+            onSuccess: (data) => {
+            toast({title: data.message, status: 'success', isClosable: true, variant: 'left-accent', position: 'top', colorScheme: 'blue' }); 
+            navigate('/login')  
+            },
+            onError : (error: any) => {
+                toast({title: error.message || 'fail connect with server' , status: 'error', isClosable: true, variant: 'left-accent', position: 'top'})   
+            }
+        })
+    }
+
+
+    
+
+
+
 
 
 

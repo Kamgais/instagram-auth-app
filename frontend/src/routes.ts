@@ -2,10 +2,12 @@ import { FunctionComponent } from "react";
 import AppContainer from "./pages/AppContainer/AppContainer";
 import Chat from "./pages/Chat/Chat";
 import Explore from "./pages/Explore/Explore";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Profile from "./pages/Profile/Profile";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 
 type Route = {
@@ -31,10 +33,23 @@ export const routes: Route[] = [
         path: "/login",
         element: LoginPage,
         protected: false
+    }, {
+        path: "/login/:google",
+        element: LoginPage,
+        protected: false
     }, 
     {
         path: "/signup",
         element: RegisterPage,
+        protected: false
+    }, {
+        path: "/forgot-password",
+        element: ForgotPassword,
+        protected: false
+    },
+    {
+        path: "/reset-password/:token",
+        element: ResetPassword,
         protected: false
     },
 
@@ -46,7 +61,7 @@ export const routes: Route[] = [
             {
                 path: 'home',
                 element : HomePage,
-                protected:true
+                protected: true
             },
             {
                 path: 'explore',

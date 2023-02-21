@@ -1,0 +1,55 @@
+@import '../../styles/colors';
+
+.recommandationContainer {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 10px;
+
+
+    .recommandationImage{
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid gray;
+
+
+        .currentImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
+
+
+        }
+    }
+}
+
+
+.recommendationUserDetails {
+
+
+    .recommendationUsername{
+        font-weight: bold;
+        font-size: 15px; 
+    }
+
+    .recommendationDetails{
+        font-size: 11px;
+        font-weight: 300;
+        color: gray; 
+    }
+}
+
+
+.recommendationFollowButton {
+    margin-left: auto;
+    color : $appBlue_normal;
+    font-size: 15px;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+        color: $appBlue_disabled;
+    }
+}

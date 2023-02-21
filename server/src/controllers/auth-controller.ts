@@ -43,7 +43,7 @@ export class AuthController {
         { userId: user.id },
         { expiresIn: "5m" }
       );
-      const confirmationLink = `${process.env.SERVER_ADRESS}/auth/confirm?token=${base64url.encode(confirmationToken)}`;
+      const confirmationLink = `${process.env.SERVER_ADDRESS}/auth/confirm?token=${base64url.encode(confirmationToken)}`;
       const data = { confirmationLink };
       const emailTemplatePath = path.join(__dirname, "../views/email.ejs");
       const html = await ejs.renderFile(emailTemplatePath, data);

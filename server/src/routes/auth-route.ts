@@ -28,9 +28,9 @@ router.get('/google', passport.authenticate('google', {scope: ['profile', 'email
 
 // Handle the callback after Google has authenticated the user
 router.get('/google/callback', passport.authenticate('google', {
-    successRedirect: `http://localhost:5173/app/home`,
+    successRedirect: "http://localhost:5173/login/google",
     failureRedirect: '/login/failed'
-}),  googleCallBackHandler)
+}))
 
 
 // google login fail
