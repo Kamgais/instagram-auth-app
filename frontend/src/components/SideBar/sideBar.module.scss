@@ -1,13 +1,23 @@
 @import '../../styles/breakpoints';
 
 
+
+
+
+
+
+
+
+
+
 .sideBarContainer {
 
     @include xs {
         left: 0;
         right: 0;
+       // top: 0;
         bottom: 0;
-       // background-color: red;
+       background-color: rgb(255, 255, 255);
         flex-direction: row;
         border-top: 1px solid rgb(196, 196, 196);
     }
@@ -27,16 +37,16 @@
    // background-color: white;
     
     
-    @include xxl {
-     width: 18vw;
-     min-width: 250px;
-     align-items: start;
-     padding-left: 20px;
-     left: 0;
-    top: 0;
-    bottom: 0;
-    border-right: 1px solid rgb(196, 196, 196);
-    }
+   @include xxl {
+    width: 18vw;
+    min-width: 80px;
+    align-items: start;
+    padding-left: 20px;
+    left: 0;
+   top: 0;
+   bottom: 0;
+   border-right: 1px solid rgb(196, 196, 196);
+   }
     
     
     display: flex;
@@ -119,7 +129,7 @@
         border-radius: 50px;
         transition: all 0.3s ease-out;
         
-        &:nth-child(2) {
+        &:nth-child(2) , &:nth-child(6) {
             @include xs {
                 display: none;
             }
@@ -200,5 +210,75 @@
         font-size: 18px;
         font-weight: 300; 
 
+    }
+}
+
+
+.drawerOpened {
+
+    
+    flex-direction: column;
+       
+        max-width: 50px;
+        align-items: center;
+        padding-left: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-right: 1px solid rgb(196, 196, 196);
+      //  background-color: red;
+
+
+        .sideBarLogo {
+            display: block;
+            content: url('../../../public/instagram.png');
+            width: 60px;
+            margin-top: 20px;
+            margin-bottom: 20px;  
+        }
+
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          //  background-color: yellow;
+          
+            justify-content: space-around;
+            align-items: center;
+
+
+            .linkItem {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                font-size: 30px;
+                
+    
+    
+                .linkItemText {
+                    display: none;
+                }
+            }
+        }
+
+
+       
+
+
+       
+
+}
+
+
+.moreButtonOpened {
+    padding: 0;
+    justify-content: center;
+    display: flex;
+    
+    
+    .moreButtonText {
+        display: none;
     }
 }
