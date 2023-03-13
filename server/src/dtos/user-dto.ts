@@ -1,4 +1,5 @@
 import { CreateUserInput } from "../schemas/user-schema";
+import { PostDto } from "./post-dto";
 
 
 export type UserDto = Omit<CreateUserInput ,"password"> & {
@@ -7,5 +8,6 @@ export type UserDto = Omit<CreateUserInput ,"password"> & {
     sex?: string,
     characteristics?: string,
     isEmailConfirmated?: boolean,
-    sessions: number[]
+    sessions: number[],
+    posts: PostDto[]
 }

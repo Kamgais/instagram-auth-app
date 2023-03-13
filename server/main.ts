@@ -1,7 +1,11 @@
 import express, { Application } from "express";
 import  { connect } from "./src/utils/connectToDB";
+import cookieParser from 'cookie-parser';
 import authRouter from './src/routes/auth-route';
 import sessionRouter from './src/routes/session-route';
+import postRouter from './src/routes/post-route';
+import userRouter from './src/routes/user-route';
+import commentRouter from './src/routes/comment-route';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import session from 'express-session';
@@ -11,6 +15,8 @@ import { User } from "./src/models/user-model";
 
 
 const app: Application = express();
+
+app.use(cookieParser())
 app.use(cors({
     origin: ['http://localhost:5173','http://127.0.0.1:5173'],
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
@@ -59,3 +65,6 @@ app.listen(process.env.PORT, async() => {
 
 app.use('/api/auth', authRouter)
 app.use('/api/session', sessionRouter)
+app.use('/api/posts', postRouter)
+app.use('/api/users', userRouter)
+app.use('/api/comments', commentRouter)

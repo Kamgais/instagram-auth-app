@@ -1,3 +1,6 @@
+import { Media } from "../models/media-model";
+import { Post } from "../models/post-model";
+import { Session } from "../models/session-model";
 import { User } from "../models/user-model";
 import { CreateUserInput } from "../schemas/user-schema";
 
@@ -25,7 +28,22 @@ export const create = async(userInput: CreateUserInput): Promise<any> => {
 
 export const findUserById = async(id: number) => {
   try {
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(id, {
+      include: [
+        {
+          model: Post,
+          include : [{
+            model: Media,
+            as: 'medias'
+          }],
+          as: 'posts'
+        },
+        {
+          model: Session,
+          as: 'sessions'
+        }
+      ]
+    });
     return Promise.resolve(user)
   } catch (error) {
     return Promise.reject(error)

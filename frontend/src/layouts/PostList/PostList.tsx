@@ -1,15 +1,22 @@
 import React, {FunctionComponent} from 'react'
+import Loader from '../../components/Loader/Loader';
 import Post from '../../components/Post/Post';
+import { usePosts } from '../../hooks/usePosts';
 import styles from './postList.module.scss';
 
 const PostList: FunctionComponent = () => {
+  const {data,isLoading, isError, isFetching} = usePosts()
+
   return (
     <div className={styles.postListContainer}>
+     {
+        isFetching && (<Loader/>)
+     } 
        {
-        [1,2,3,4,5,6,7,8,9,10].map((post: any, index) => {
+        data?.map((post: any, index) => {
             return (
 
-                <Post key={index}/>
+                <Post key={index} post={post}/>
             )
         })
        } 
