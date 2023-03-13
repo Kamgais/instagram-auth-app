@@ -7,8 +7,10 @@ export const authorize = async (
   next: NextFunction
 ) => {
   // get the tokens from req object
+ // console.log(req.cookies)
   const accessToken =
     req.cookies["accessToken"] || req.headers.authorization?.split(" ")[1];
+   // console.log(accessToken)
   const refreshToken = req.cookies["refreshToken"] || req.headers["x-refresh"];
 
   if (!accessToken) {
@@ -33,7 +35,7 @@ export const authorize = async (
     const { newAccessToken, newRefreshToken } = tokens;
 
     res.cookie("accessToken", newAccessToken, {
-      maxAge: 900000, // 15 mins
+      maxAge: 3.154e10, // 1 year
       httpOnly: true,
       domain: "localhost",
       path: "/",

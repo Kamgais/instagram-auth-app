@@ -7,6 +7,8 @@ import {
 import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
 import { Session } from "./session-model";
+import { Post } from "./post-model";
+import { Comment } from "./comment-model";
 
 @Table({ tableName: "users", timestamps: false })
 export class User extends Model<User> {
@@ -88,4 +90,10 @@ export class User extends Model<User> {
 
   @HasMany(() => Session)
   sessions!: Session[];
+
+  @HasMany(() => Post)
+  posts!: Post[]
+
+  @HasMany(() => Comment)
+  comments!: Comment[]
 }
